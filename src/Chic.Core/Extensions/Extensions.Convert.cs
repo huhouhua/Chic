@@ -18,8 +18,7 @@ namespace Chic.Core.Extensions
         {
             if (data == null)
                 return 0;
-            int result;
-            var success = int.TryParse(data.ToString(), out result);
+            var success = int.TryParse(data.ToString(), out int result);
             if (success)
                 return result;
             try
@@ -40,8 +39,7 @@ namespace Chic.Core.Extensions
         {
             if (data == null)
                 return null;
-            int result;
-            bool isValid = int.TryParse(data.ToString(), out result);
+            bool isValid = int.TryParse(data.ToString(), out int result);
             if (isValid)
                 return result;
             return null;
@@ -55,8 +53,7 @@ namespace Chic.Core.Extensions
         {
             if (data == null)
                 return 0;
-            double result;
-            return double.TryParse(data.ToString(), out result) ? result : 0;
+            return double.TryParse(data.ToString(), out double result) ? result : 0;
         }
 
         /// <summary>
@@ -77,8 +74,7 @@ namespace Chic.Core.Extensions
         {
             if (data == null)
                 return null;
-            double result;
-            bool isValid = double.TryParse(data.ToString(), out result);
+            bool isValid = double.TryParse(data.ToString(), out double result);
             if (isValid)
                 return result;
             return null;
@@ -92,8 +88,7 @@ namespace Chic.Core.Extensions
         {
             if (data == null)
                 return 0;
-            decimal result;
-            return decimal.TryParse(data.ToString(), out result) ? result : 0;
+            return decimal.TryParse(data.ToString(), out decimal result) ? result : 0;
         }
 
         /// <summary>
@@ -114,8 +109,7 @@ namespace Chic.Core.Extensions
         {
             if (data == null)
                 return null;
-            decimal result;
-            bool isValid = decimal.TryParse(data.ToString(), out result);
+            bool isValid = decimal.TryParse(data.ToString(),  out decimal result);
             if (isValid)
                 return result;
             return null;
@@ -145,8 +139,7 @@ namespace Chic.Core.Extensions
         {
             if (data == null)
                 return DateTime.MinValue;
-            DateTime result;
-            return DateTime.TryParse(data.ToString(), out result) ? result : DateTime.MinValue;
+            return DateTime.TryParse(data.ToString(), out DateTime result) ? result : DateTime.MinValue;
         }
 
         /// <summary>
@@ -157,8 +150,7 @@ namespace Chic.Core.Extensions
         {
             if (data == null)
                 return null;
-            DateTime result;
-            bool isValid = DateTime.TryParse(data.ToString(), out result);
+            bool isValid = DateTime.TryParse(data.ToString(), out DateTime result);
             if (isValid)
                 return result;
             return null;
@@ -178,8 +170,7 @@ namespace Chic.Core.Extensions
             bool? value = GetBool(data);
             if (value != null)
                 return value.Value;
-            bool result;
-            return bool.TryParse(data.ToString(), out result) && result;
+            return bool.TryParse(data.ToString(), out bool result) && result;
         }
 
         /// <summary>
@@ -219,8 +210,7 @@ namespace Chic.Core.Extensions
             bool? value = GetBool(data);
             if (value != null)
                 return value.Value;
-            bool result;
-            bool isValid = bool.TryParse(data.ToString(), out result);
+            bool isValid = bool.TryParse(data.ToString(),  out bool result);
             if (isValid)
                 return result;
             return null;
