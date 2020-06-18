@@ -1,8 +1,0 @@
-E:\ChicCode\src\Chic.Extensions.Http\bin\Debug\netstandard2.0\Chic.Extensions.Http.deps.json
-E:\ChicCode\src\Chic.Extensions.Http\bin\Debug\netstandard2.0\Chic.Extensions.Http.dll
-E:\ChicCode\src\Chic.Extensions.Http\obj\Debug\netstandard2.0\Chic.Extensions.Http.AssemblyInfoInputs.cache
-E:\ChicCode\src\Chic.Extensions.Http\obj\Debug\netstandard2.0\Chic.Extensions.Http.AssemblyInfo.cs
-E:\ChicCode\src\Chic.Extensions.Http\bin\Debug\netstandard2.0\Chic.Extensions.Http.pdb
-E:\ChicCode\src\Chic.Extensions.Http\obj\Debug\netstandard2.0\Chic.Extensions.Http.dll
-E:\ChicCode\src\Chic.Extensions.Http\obj\Debug\netstandard2.0\Chic.Extensions.Http.pdb
-E:\ChicCode\src\Chic.Extensions.Http\obj\Debug\netstandard2.0\Chic.Extensions.Http.csprojAssemblyReference.cache
