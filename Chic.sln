@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chic.Extensions.Http", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chic.Infrastructure.Core", "src\Chic.Infrastructure.Core\Chic.Infrastructure.Core.csproj", "{041278DE-C547-4A33-9F34-57E732F373F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chic.Tests", "test\Chic.Tests\Chic.Tests.csproj", "{2A835B17-D3EA-4381-AD88-F44B356C6DF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{041278DE-C547-4A33-9F34-57E732F373F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{041278DE-C547-4A33-9F34-57E732F373F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{041278DE-C547-4A33-9F34-57E732F373F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A835B17-D3EA-4381-AD88-F44B356C6DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A835B17-D3EA-4381-AD88-F44B356C6DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A835B17-D3EA-4381-AD88-F44B356C6DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A835B17-D3EA-4381-AD88-F44B356C6DF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{844AB6BB-4CEB-4CCC-96C5-803458259058} = {CE6E927A-E597-44D3-93E9-FF7787FA4CBF}
 		{51121E70-81F3-4B53-9577-9D056847FE72} = {CE6E927A-E597-44D3-93E9-FF7787FA4CBF}
 		{041278DE-C547-4A33-9F34-57E732F373F3} = {CE6E927A-E597-44D3-93E9-FF7787FA4CBF}
+		{2A835B17-D3EA-4381-AD88-F44B356C6DF0} = {3A81D174-541C-4AA3-AA0F-E5B6EAE15946}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FBA976E-FF55-4C68-9F87-C7F668AEC484}

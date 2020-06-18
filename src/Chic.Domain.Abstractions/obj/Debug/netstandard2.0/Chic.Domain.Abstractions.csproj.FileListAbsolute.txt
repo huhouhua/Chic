@@ -1,0 +1,8 @@
+E:\ChicCode\src\Chic.Domain.Abstractions\bin\Debug\netstandard2.0\Chic.Domain.Abstractions.deps.json
+E:\ChicCode\src\Chic.Domain.Abstractions\bin\Debug\netstandard2.0\Chic.Domain.Abstractions.dll
+E:\ChicCode\src\Chic.Domain.Abstractions\obj\Debug\netstandard2.0\Chic.Domain.Abstractions.AssemblyInfoInputs.cache
+E:\ChicCode\src\Chic.Domain.Abstractions\obj\Debug\netstandard2.0\Chic.Domain.Abstractions.AssemblyInfo.cs
+E:\ChicCode\src\Chic.Domain.Abstractions\bin\Debug\netstandard2.0\Chic.Domain.Abstractions.pdb
+E:\ChicCode\src\Chic.Domain.Abstractions\obj\Debug\netstandard2.0\Chic.Domain.Abstractions.dll
+E:\ChicCode\src\Chic.Domain.Abstractions\obj\Debug\netstandard2.0\Chic.Domain.Abstractions.pdb
+E:\ChicCode\src\Chic.Domain.Abstractions\obj\Debug\netstandard2.0\Chic.Domain.Abstractions.csprojAssemblyReference.cache
