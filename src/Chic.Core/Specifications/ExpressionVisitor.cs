@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace Chic.Core.Serializations
+namespace Chic.Core.Specifications
 {
     /// <summary>
     /// 表示用于重新绑定参数

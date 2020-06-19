@@ -7,9 +7,11 @@
   <ItemGroup>
     <Compile Remove="Extensions\Extensions.DateTime.cs" />
     <Compile Remove="Extensions\Extensions.Nullable.cs" />
+    <Compile Remove="Extensions\Extensions.String.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
@@ -18,6 +20,7 @@
   <ItemGroup>
     <None Include="Extensions\Extensions.DateTime.cs" />
     <None Include="Extensions\Extensions.Nullable.cs" />
+    <None Include="Extensions\Extensions.String.cs" />
   </ItemGroup>
 
 </Project>

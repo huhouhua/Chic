@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Chic.Core\Chic.Core.csproj" />
     <ProjectReference Include="..\Chic.Domain.Abstractions\Chic.Domain.Abstractions.csproj" />
   </ItemGroup>
 
