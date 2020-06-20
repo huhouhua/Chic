@@ -2,6 +2,7 @@
 using Chic.Domain.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
@@ -13,9 +14,29 @@ namespace Chic.Infrastructure.Core
     {
         IUnitOfWork UnitOfWork { get; }
 
-        TEntity Create(TEntity entity);
+        IQueryable<TEntity> GetPagedList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int pageIndex, int pageSize);
 
-        Task<TEntity> CreateAsync(TEntity entity, CancellationToken cancellationToken = default);
+        IQueryable<TEntity> GetPagedList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, IPagedListRequest request);
+
+        IQueryable<TEntity> GetSkipTakeList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int skip, int take);
+
+        IList<TEntity> GetPagedList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int pageIndex, int pageSize, out int totalCount);
+
+        IList<TEntity> GetPagedList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, IPagedListRequest request, out int totalCount);
+
+        IList<TEntity> GetSkipTakeList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int skip, int take, out int totalCount);
+
+        Task<int> GetTotalCount(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
+
+        Task<IList<TEntity>> GetPagedListAsync(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int pageIndex, int pageSize, CancellationToken cancellationToken = default);
+
+        Task<IList<TEntity>> GetPagedListAsync(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, IPagedListRequest request, CancellationToken cancellationToken = default);
+
+        Task<IList<TEntity>> GetSkipTakeListAsync(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int skip, int take, CancellationToken cancellationToken = default);
+
+        TEntity Insert(TEntity entity);
+
+        Task<TEntity> InsertAsync(TEntity entity, CancellationToken cancellationToken = default);
 
         TEntity Update(TEntity entity);
 
@@ -58,13 +79,13 @@ namespace Chic.Infrastructure.Core
 
         List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate);
 
-        List<TEntity> GetAllListByAsc(Expression<Func<TEntity, TKey>> orderBy);
+        List<TEntity> GetAllListByAsc(Expression<Func<TEntity, TKey>> orderby);
 
-        List<TEntity> GetAllListByAsc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy);
+        List<TEntity> GetAllListByAsc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderby);
 
-        List<TEntity> GetAllListByDesc(Expression<Func<TEntity, TKey>> orderBy);
+        List<TEntity> GetAllListByDesc(Expression<Func<TEntity, TKey>> orderby);
 
-        List<TEntity> GetAllListByDesc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy);
+        List<TEntity> GetAllListByDesc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderby);
 
 
 
@@ -75,41 +96,41 @@ namespace Chic.Infrastructure.Core
 
         Task<List<TEntity>> GetAllListAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
 
-        Task<List<TEntity>> GetAllListByAscAsync(Expression<Func<TEntity, TKey>> orderBy, CancellationToken cancellationToken = default);
+        Task<List<TEntity>> GetAllListByAscAsync(Expression<Func<TEntity, TKey>> orderby, CancellationToken cancellationToken = default);
 
-        Task<List<TEntity>> GetAllListByAscAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, CancellationToken cancellationToken = default);
+        Task<List<TEntity>> GetAllListByAscAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderby, CancellationToken cancellationToken = default);
 
-        Task<List<TEntity>> GetAllListByDescAsync(Expression<Func<TEntity, TKey>> orderBy, CancellationToken cancellationToken = default);
+        Task<List<TEntity>> GetAllListByDescAsync(Expression<Func<TEntity, TKey>> orderby, CancellationToken cancellationToken = default);
 
-        Task<List<TEntity>> GetAllListByDescAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, CancellationToken cancellationToken = default);
-
-     
-
-        List<TEntity> GetListByPage(IPagedListRequest page);
-
-        List<TEntity> GetListByPage(Expression<Func<TEntity, bool>> predicate, IPagedListRequest page);
-
-        List<TEntity> GetListByPageAsc(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page);
-
-        List<TEntity> GetListByPageAsc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page);
-
-        List<TEntity> GetListByPageDesc(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page);
-
-        List<TEntity> GetListByPageDesc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page);
+        Task<List<TEntity>> GetAllListByDescAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderby, CancellationToken cancellationToken = default);
 
 
+        List<TEntity> GetListByPaged(IPagedListRequest paged, out int totalCount);
 
-        List<TEntity> GetListByPageAsync(IPagedListRequest page, CancellationToken cancellationToken = default);
+        List<TEntity> GetListByPaged(Expression<Func<TEntity, bool>> predicate, IPagedListRequest paged, out int totalCount);
 
-        List<TEntity> GetListByPageAsync(Expression<Func<TEntity, bool>> predicate, IPagedListRequest page, CancellationToken cancellationToken = default);
+        List<TEntity> GetListByPagedAsc(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, out int totalCount);
 
-        List<TEntity> GetListByPageAscAsync(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page, CancellationToken cancellationToken = default);
+        List<TEntity> GetListByPagedAsc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, out int totalCount);
 
-        List<TEntity> GetListByPageAscAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page, CancellationToken cancellationToken = default);
+        List<TEntity> GetListByPagedDesc(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, out int totalCount);
 
-        List<TEntity> GetListByPageDescAsync(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page, CancellationToken cancellationToken = default);
+        List<TEntity> GetListByPagedDesc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, out int totalCount);
 
-        List<TEntity> GetListByPageDescAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page, CancellationToken cancellationToken = default);
+
+        Task<List<TEntity>> GetListByPagedAsync(IPagedListRequest paged, CancellationToken cancellationToken = default);
+
+        Task<List<TEntity>> GetListByPagedAsync(Expression<Func<TEntity, bool>> predicate, IPagedListRequest paged, CancellationToken cancellationToken = default);
+
+        Task<List<TEntity>> GetListByPagedAscAsync(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, CancellationToken cancellationToken = default);
+
+        Task<List<TEntity>> GetListByPagedAscAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, CancellationToken cancellationToken = default);
+
+        Task<List<TEntity>> GetListByPagedDescAsync(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, CancellationToken cancellationToken = default);
+
+        Task<List<TEntity>> GetListByPagedDescAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, CancellationToken cancellationToken = default);
+
+
 
         TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate);
 
@@ -121,6 +142,6 @@ namespace Chic.Infrastructure.Core
 
         TEntity LastOrDefault(Expression<Func<TEntity, bool>> predicate);
 
-        Task<TEntity> LastOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<TEntity> LastOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
     }
 }

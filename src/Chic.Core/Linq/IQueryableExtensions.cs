@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 
-namespace Chic.Core.Linq
+namespace System.Linq
 {
     public static class IQueryableExtensions
     {

@@ -25,14 +25,14 @@ namespace Chic.Infrastructure.Core
 
         }
 
-        public virtual TEntity Create(TEntity entity)
+        public virtual TEntity Insert(TEntity entity)
         {
             return DbContext.Add(entity).Entity;
         }
 
-        public virtual Task<TEntity> CreateAsync(TEntity entity, CancellationToken cancellationToken = default)
+        public virtual Task<TEntity> InsertAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
-            return Task.FromResult(Create(entity));
+            return Task.FromResult(Insert(entity));
         }
 
         public virtual TEntity Update(TEntity entity)
@@ -75,6 +75,105 @@ namespace Chic.Infrastructure.Core
             }
         }
 
+        protected virtual IQueryable<TEntity> GetNoTrackingQueryable(Expression<Func<TEntity, bool>> predicate)
+        {
+            var query = Table.AsNoTracking().AsQueryable();
+
+            if (predicate != null)
+            {
+                query.Where(predicate);
+            }
+            return query;
+        }
+
+        public virtual IQueryable<TEntity> GetPagedList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int pageIndex, int pageSize)
+        {
+            var query = GetNoTrackingQueryable(predicate);
+
+            query = query.ApplyOrder(dictOrder);
+
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+
+            return query;
+        }
+
+        public virtual IQueryable<TEntity> GetPagedList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, IPagedListRequest request)
+        {
+            var query = GetNoTrackingQueryable(predicate);
+
+            query = query.ApplyOrder(dictOrder);
+
+            query = query.Skip(request.Skip).Take(request.PageSize);
+
+            return query;
+        }
+
+        public virtual IQueryable<TEntity> GetSkipTakeList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int skip, int take)
+        {
+            var query = GetNoTrackingQueryable(predicate);
+
+            query = query.ApplyOrder(dictOrder);
+
+            query = query.Skip(skip).Take(take);
+
+            return query;
+        }
+
+        public virtual IList<TEntity> GetPagedList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int pageIndex, int pageSize, out int totalCount)
+        {
+            var query = GetNoTrackingQueryable(predicate);
+
+            query = query.ApplyOrder(dictOrder);
+
+            totalCount = query.Count();
+
+            return query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+        }
+
+        public virtual IList<TEntity> GetPagedList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, IPagedListRequest request, out int totalCount)
+        {
+            var query = GetNoTrackingQueryable(predicate);
+
+            query = query.ApplyOrder(dictOrder);
+
+            totalCount = query.Count();
+
+            return query.Skip(request.Skip).Take(request.PageSize).ToList();
+
+        }
+
+        public virtual IList<TEntity> GetSkipTakeList(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int skip, int take, out int totalCount)
+        {
+            var query = GetNoTrackingQueryable(predicate);
+
+            query = query.ApplyOrder(dictOrder);
+
+            totalCount = query.Count();
+
+            return query.Skip(skip).Take(take).ToList();
+        }
+
+        public virtual async Task<IList<TEntity>> GetPagedListAsync(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        {
+            return await GetPagedList(predicate, dictOrder, pageIndex, pageSize).ToListAsync(cancellationToken);
+        }
+
+        public virtual async Task<IList<TEntity>> GetPagedListAsync(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, IPagedListRequest request, CancellationToken cancellationToken = default)
+        {
+            return await GetPagedList(predicate, dictOrder, request).ToListAsync(cancellationToken);
+        }
+
+        public virtual async Task<IList<TEntity>> GetSkipTakeListAsync(Expression<Func<TEntity, bool>> predicate, IDictionary<Expression<Func<TEntity, object>>, bool> dictOrder, int skip, int take, CancellationToken cancellationToken = default)
+        {
+            return await GetSkipTakeList(predicate, dictOrder, skip, take).ToListAsync(cancellationToken);
+        }
+
+        public virtual async Task<int> GetTotalCount(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
+        {
+           return await GetNoTrackingQueryable(predicate).CountAsync(cancellationToken);
+        }
+
+     
     }
 
     public abstract class Repository<TEntity, TKey, TDbContext> : Repository<TEntity, TDbContext>, IRepository<TEntity, TKey> where TEntity : Entity<TKey>, IAggregateRoot where TDbContext : EFContext
@@ -87,7 +186,7 @@ namespace Chic.Infrastructure.Core
 
         protected  IQueryable<TEntity> GetAll() 
         {
-            return Table.AsTracking();
+            return Table.AsNoTracking();
         }
 
         private Expression<Func<TEntity, TKey>> DefaultOrder(Expression<Func<TEntity,TKey>> order)
@@ -112,6 +211,30 @@ namespace Chic.Infrastructure.Core
             var lambdaBody = Expression.Equal(leftExpression, rightExpression);
 
             return Expression.Lambda<Func<TEntity, bool>>(lambdaBody, lambdaParam);
+        }
+
+        public TKey InsertAndGetId(TEntity entity)
+        {
+            entity = base.Insert(entity);
+
+            if (entity.IsTransient())
+            {
+                DbContext.SaveChanges();
+            }
+
+            return entity.Id;
+        }
+
+        public  async Task<TKey> InsertAndGetIdAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            entity = await InsertAsync(entity);
+
+            if (entity.IsTransient())
+            {
+                await DbContext.SaveChangesAsync(cancellationToken);
+            }
+
+            return entity.Id;
         }
 
         public bool Delete(TKey id)
@@ -311,66 +434,6 @@ namespace Chic.Infrastructure.Core
             return await GetAll().Where(predicate).OrderByDescending(DefaultOrder(orderBy)).ToListAsync(cancellationToken);
         }
 
-        public List<TEntity> GetListByPage(IPagedListRequest page)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetListByPage(Expression<Func<TEntity, bool>> predicate, IPagedListRequest page)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetListByPageAsc(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetListByPageAsc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetListByPageDesc(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetListByPageDesc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetListByPageAsync(IPagedListRequest page, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetListByPageAsync(Expression<Func<TEntity, bool>> predicate, IPagedListRequest page, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetListByPageAscAsync(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetListByPageAscAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetListByPageDescAsync(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetListByPageDescAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest page, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
         public TEntity LastOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
             if (predicate == null) return null;
@@ -378,11 +441,96 @@ namespace Chic.Infrastructure.Core
             return GetAll().LastOrDefault(predicate);
         }
 
-        public async Task<TEntity> LastOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity> LastOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
         {
             if (predicate == null) return null;
 
-            return await GetAll().LastOrDefaultAsync(predicate);
+            return await GetAll().LastOrDefaultAsync(predicate,cancellationToken);
+        }
+
+        public List<TEntity> GetListByPaged(IPagedListRequest paged, out int totalCount)
+        {
+            var list  = base.GetNoTrackingQueryable(null);
+
+            totalCount = list.Count();
+
+            return list.Skip(paged.Skip).Take(paged.PageSize).ToList();
+        }
+
+        public List<TEntity> GetListByPaged(Expression<Func<TEntity, bool>> predicate, IPagedListRequest paged, out int totalCount)
+        {
+            var list = base.GetNoTrackingQueryable(predicate);
+
+            totalCount = list.Count();
+
+            return list.Skip(paged.Skip).Take(paged.PageSize).ToList();
+        }
+
+        public List<TEntity> GetListByPagedAsc(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, out int totalCount)
+        {
+            var list = base.GetNoTrackingQueryable(null).OrderBy(DefaultOrder(orderBy));
+
+            totalCount = list.Count();
+
+            return list.Skip(paged.Skip).Take(paged.PageSize).ToList();
+        }
+
+        public List<TEntity> GetListByPagedAsc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, out int totalCount)
+        {
+            var list = base.GetNoTrackingQueryable(predicate).OrderBy(DefaultOrder(orderBy));
+
+            totalCount = list.Count();
+
+            return list.Skip(paged.Skip).Take(paged.PageSize).ToList();
+
+        }
+
+        public List<TEntity> GetListByPagedDesc(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, out int totalCount)
+        {
+            var list = base.GetNoTrackingQueryable(null).OrderByDescending(DefaultOrder(orderBy));
+
+            totalCount = list.Count();
+
+            return list.Skip(paged.Skip).Take(paged.PageSize).ToList();
+        }
+
+        public List<TEntity> GetListByPagedDesc(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, out int totalCount)
+        {
+            var list = base.GetNoTrackingQueryable(predicate).OrderByDescending(DefaultOrder(orderBy));
+
+            totalCount = list.Count();
+
+            return list.Skip(paged.Skip).Take(paged.PageSize).ToList();
+        }
+
+        public async Task<List<TEntity>> GetListByPagedAsync(IPagedListRequest paged, CancellationToken cancellationToken = default)
+        {
+            return await base.GetNoTrackingQueryable(null).Skip(paged.Skip).Take(paged.PageSize).ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<TEntity>> GetListByPagedAsync(Expression<Func<TEntity, bool>> predicate, IPagedListRequest paged, CancellationToken cancellationToken = default)
+        {
+            return await base.GetNoTrackingQueryable(predicate).Skip(paged.Skip).Take(paged.PageSize).ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<TEntity>> GetListByPagedAscAsync(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, CancellationToken cancellationToken = default)
+        {
+            return await base.GetNoTrackingQueryable(null).OrderBy(DefaultOrder(orderBy)).Skip(paged.Skip).Take(paged.PageSize).ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<TEntity>> GetListByPagedAscAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, CancellationToken cancellationToken = default)
+        {
+            return await base.GetNoTrackingQueryable(predicate).OrderBy(DefaultOrder(orderBy)).Skip(paged.Skip).Take(paged.PageSize).ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<TEntity>> GetListByPagedDescAsync(Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, CancellationToken cancellationToken = default)
+        {
+            return await base.GetNoTrackingQueryable(null).OrderByDescending(DefaultOrder(orderBy)).Skip(paged.Skip).Take(paged.PageSize).ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<TEntity>> GetListByPagedDescAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> orderBy, IPagedListRequest paged, CancellationToken cancellationToken = default)
+        {
+            return await base.GetNoTrackingQueryable(predicate).OrderByDescending(DefaultOrder(orderBy)).Skip(paged.Skip).Take(paged.PageSize).ToListAsync(cancellationToken);
         }
     }
 }
