@@ -72,13 +72,5 @@ namespace Chic.Core.Extensions
             return string.IsNullOrWhiteSpace(str);
         }
 
-
-        /// <summary>
-        /// 检查给定的集合对象是否为空或没有项。
-        /// </summary>
-        public static bool IsNullOrEmpty<T>(this ICollection<T> source)
-        {
-            return source == null || source.Count <= 0;
-        }
     }
 }

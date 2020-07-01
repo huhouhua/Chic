@@ -16,17 +16,22 @@ namespace Chic.Infrastructure.Core
         protected IMediator _mediator;
         private ICapPublisher _capBus;
 
-        protected EFContext(DbContextOptions options, IMediator mediator, ICapPublisher capBus) : base(options)
+        //protected EFContext(DbContextOptions options, IMediator mediator, ICapPublisher capBus) : base(options)
+        //{
+        //    _mediator = mediator;
+        //    _capBus = capBus;
+        //}
+
+        protected EFContext(DbContextOptions options) : base(options)
         {
-            _mediator = mediator;
-            _capBus = capBus;
+           
         }
 
         public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
         {
             var result = await base.SaveChangesAsync(cancellationToken);
 
-            await _mediator.DispatchDomainEventsAsync(this);
+           // await _mediator.DispatchDomainEventsAsync(this);
 
             return true;
         }
@@ -48,7 +53,10 @@ namespace Chic.Infrastructure.Core
             }
             else
             {
-                _contextTransaction = Database.BeginTransaction(_capBus, false);
+                //_contextTransaction = Database.BeginTransaction(_capBus, false);
+
+                _contextTransaction = Database.BeginTransaction();
+
             }
 
             return Task.FromResult(_contextTransaction);

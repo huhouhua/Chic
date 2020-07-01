@@ -12,7 +12,7 @@ namespace Chic.Core.ObjectMapping
         /// </summary>
         /// <typeparam name="TDestination">目标对象的类型</typeparam>
         /// <param name="source">源对象</param>
-        TDestination Map<TDestination>(object source);
+        TDestination MapTo<TDestination>(object source);
 
         /// <summary>
         /// 从源对象到现有目标对象的映射
@@ -22,8 +22,9 @@ namespace Chic.Core.ObjectMapping
         /// <param name="source">源对象</param>
         /// <param name="destination">目标对象</param>
         /// <returns><paramref name="destination"/> 映射后的对象</returns>
-        TDestination Map<TSource, TDestination>(TSource source, TDestination destination);
+        TDestination MapTo<TSource, TDestination>(TSource source, TDestination destination);
 
+        IEnumerable<TDestination> MapToCollection<TSource, TDestination>(IEnumerable<TSource> source);
 
         /// <summary>
         /// 从源对象到现有目标对象的映射
@@ -32,7 +33,7 @@ namespace Chic.Core.ObjectMapping
         /// <param name="sourceType">源类型</param>
         /// <param name="destinationType">目标类型</param>
         /// <returns><paramref name="object"/> 映射后的对象</returns>
-        object Map(object source, Type sourceType, Type destinationType);
+        object MapTo(object source, Type sourceType, Type destinationType);
 
 
         /// <summary>

@@ -60,7 +60,9 @@ namespace Chic.Infrastructure.Core
         Task<long> LongCountAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
 
 
+        TKey InsertAndGetId(TEntity entity);
 
+        Task<TKey> InsertAndGetIdAsync(TEntity entity, CancellationToken cancellationToken = default);
 
 
         bool Delete(TKey id);

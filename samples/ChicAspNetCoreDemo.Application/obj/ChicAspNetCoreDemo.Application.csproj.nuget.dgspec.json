@@ -1,0 +1,431 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Application\\ChicAspNetCoreDemo.Application.csproj": {}
+  },
+  "projects": {
+    "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Application\\ChicAspNetCoreDemo.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Application\\ChicAspNetCoreDemo.Application.csproj",
+        "projectName": "ChicAspNetCoreDemo.Application",
+        "projectPath": "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Application\\ChicAspNetCoreDemo.Application.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Infrastructure\\ChicAspNetCoreDemo.Infrastructure.csproj": {
+                "projectPath": "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Infrastructure\\ChicAspNetCoreDemo.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "D:\\.net core sdk\\dotnet-sdk-5.0.100-preview.6.20310.4-win-x64\\sdk\\5.0.100-preview.6.20310.4\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Domain\\ChicAspNetCoreDemo.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Domain\\ChicAspNetCoreDemo.Domain.csproj",
+        "projectName": "ChicAspNetCoreDemo.Domain",
+        "projectPath": "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Domain\\ChicAspNetCoreDemo.Domain.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "E:\\ChicCode\\src\\Chic.Core\\Chic.Core.csproj": {
+                "projectPath": "E:\\ChicCode\\src\\Chic.Core\\Chic.Core.csproj"
+              },
+              "E:\\ChicCode\\src\\Chic.Domain.Abstractions\\Chic.Domain.Abstractions.csproj": {
+                "projectPath": "E:\\ChicCode\\src\\Chic.Domain.Abstractions\\Chic.Domain.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "D:\\.net core sdk\\dotnet-sdk-5.0.100-preview.6.20310.4-win-x64\\sdk\\5.0.100-preview.6.20310.4\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Infrastructure\\ChicAspNetCoreDemo.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Infrastructure\\ChicAspNetCoreDemo.Infrastructure.csproj",
+        "projectName": "ChicAspNetCoreDemo.Infrastructure",
+        "projectPath": "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Infrastructure\\ChicAspNetCoreDemo.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Domain\\ChicAspNetCoreDemo.Domain.csproj": {
+                "projectPath": "E:\\ChicCode\\samples\\ChicAspNetCoreDemo.Domain\\ChicAspNetCoreDemo.Domain.csproj"
+              },
+              "E:\\ChicCode\\src\\Chic.Infrastructure.Core\\Chic.Infrastructure.Core.csproj": {
+                "projectPath": "E:\\ChicCode\\src\\Chic.Infrastructure.Core\\Chic.Infrastructure.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "D:\\.net core sdk\\dotnet-sdk-5.0.100-preview.6.20310.4-win-x64\\sdk\\5.0.100-preview.6.20310.4\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\ChicCode\\src\\Chic.Core\\Chic.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\ChicCode\\src\\Chic.Core\\Chic.Core.csproj",
+        "projectName": "Chic.Core",
+        "projectPath": "E:\\ChicCode\\src\\Chic.Core\\Chic.Core.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\ChicCode\\src\\Chic.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "JetBrains.Annotations": {
+              "target": "Package",
+              "version": "[2020.1.0, )"
+            },
+            "Microsoft.AspNetCore.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "D:\\.net core sdk\\dotnet-sdk-5.0.100-preview.6.20310.4-win-x64\\sdk\\5.0.100-preview.6.20310.4\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\ChicCode\\src\\Chic.Domain.Abstractions\\Chic.Domain.Abstractions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\ChicCode\\src\\Chic.Domain.Abstractions\\Chic.Domain.Abstractions.csproj",
+        "projectName": "Chic.Domain.Abstractions",
+        "projectPath": "E:\\ChicCode\\src\\Chic.Domain.Abstractions\\Chic.Domain.Abstractions.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\ChicCode\\src\\Chic.Domain.Abstractions\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "D:\\.net core sdk\\dotnet-sdk-5.0.100-preview.6.20310.4-win-x64\\sdk\\5.0.100-preview.6.20310.4\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\ChicCode\\src\\Chic.Infrastructure.Core\\Chic.Infrastructure.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\ChicCode\\src\\Chic.Infrastructure.Core\\Chic.Infrastructure.Core.csproj",
+        "projectName": "Chic.Infrastructure.Core",
+        "projectPath": "E:\\ChicCode\\src\\Chic.Infrastructure.Core\\Chic.Infrastructure.Core.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\ChicCode\\src\\Chic.Infrastructure.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "E:\\ChicCode\\src\\Chic.Core\\Chic.Core.csproj": {
+                "projectPath": "E:\\ChicCode\\src\\Chic.Core\\Chic.Core.csproj"
+              },
+              "E:\\ChicCode\\src\\Chic.Domain.Abstractions\\Chic.Domain.Abstractions.csproj": {
+                "projectPath": "E:\\ChicCode\\src\\Chic.Domain.Abstractions\\Chic.Domain.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "DotNetCore.CAP": {
+              "target": "Package",
+              "version": "[3.0.4, )"
+            },
+            "DotNetCore.CAP.SqlServer": {
+              "target": "Package",
+              "version": "[3.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "D:\\.net core sdk\\dotnet-sdk-5.0.100-preview.6.20310.4-win-x64\\sdk\\5.0.100-preview.6.20310.4\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

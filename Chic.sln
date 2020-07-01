@@ -7,15 +7,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE6E927A-E59
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3A81D174-541C-4AA3-AA0F-E5B6EAE15946}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chic.Core", "src\Chic.Core\Chic.Core.csproj", "{B2621B40-E352-43E5-9E71-1C2883597F5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chic.Core", "src\Chic.Core\Chic.Core.csproj", "{B2621B40-E352-43E5-9E71-1C2883597F5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chic.Domain.Abstractions", "src\Chic.Domain.Abstractions\Chic.Domain.Abstractions.csproj", "{844AB6BB-4CEB-4CCC-96C5-803458259058}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chic.Domain.Abstractions", "src\Chic.Domain.Abstractions\Chic.Domain.Abstractions.csproj", "{844AB6BB-4CEB-4CCC-96C5-803458259058}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chic.Extensions.Http", "src\Chic.Extensions.Http\Chic.Extensions.Http.csproj", "{51121E70-81F3-4B53-9577-9D056847FE72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chic.Extensions.Http", "src\Chic.Extensions.Http\Chic.Extensions.Http.csproj", "{51121E70-81F3-4B53-9577-9D056847FE72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chic.Infrastructure.Core", "src\Chic.Infrastructure.Core\Chic.Infrastructure.Core.csproj", "{041278DE-C547-4A33-9F34-57E732F373F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chic.Infrastructure.Core", "src\Chic.Infrastructure.Core\Chic.Infrastructure.Core.csproj", "{041278DE-C547-4A33-9F34-57E732F373F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chic.Tests", "test\Chic.Tests\Chic.Tests.csproj", "{2A835B17-D3EA-4381-AD88-F44B356C6DF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chic.Tests", "test\Chic.Tests\Chic.Tests.csproj", "{2A835B17-D3EA-4381-AD88-F44B356C6DF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E13B5FB7-0AE9-4228-83B5-8F06C3B9E566}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChicAspNetCoreDemo", "samples\ChicAspNetCoreDemo\ChicAspNetCoreDemo.csproj", "{C322A034-8618-40F4-8CAA-163B44D18793}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChicAspNetCoreDemo.Infrastructure", "samples\ChicAspNetCoreDemo.Infrastructure\ChicAspNetCoreDemo.Infrastructure.csproj", "{A7805725-125B-44B6-899A-81315F5E40F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChicAspNetCoreDemo.Domain", "samples\ChicAspNetCoreDemo.Domain\ChicAspNetCoreDemo.Domain.csproj", "{03FE1720-A409-4D39-A827-A3E4A89BB056}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChicAspNetCoreDemo.Application", "samples\ChicAspNetCoreDemo.Application\ChicAspNetCoreDemo.Application.csproj", "{DC3850AD-D75B-4D44-A64B-BCECB8E7723E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +53,22 @@ Global
 		{2A835B17-D3EA-4381-AD88-F44B356C6DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A835B17-D3EA-4381-AD88-F44B356C6DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A835B17-D3EA-4381-AD88-F44B356C6DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C322A034-8618-40F4-8CAA-163B44D18793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C322A034-8618-40F4-8CAA-163B44D18793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C322A034-8618-40F4-8CAA-163B44D18793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C322A034-8618-40F4-8CAA-163B44D18793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7805725-125B-44B6-899A-81315F5E40F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7805725-125B-44B6-899A-81315F5E40F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7805725-125B-44B6-899A-81315F5E40F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7805725-125B-44B6-899A-81315F5E40F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03FE1720-A409-4D39-A827-A3E4A89BB056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03FE1720-A409-4D39-A827-A3E4A89BB056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03FE1720-A409-4D39-A827-A3E4A89BB056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03FE1720-A409-4D39-A827-A3E4A89BB056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC3850AD-D75B-4D44-A64B-BCECB8E7723E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC3850AD-D75B-4D44-A64B-BCECB8E7723E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC3850AD-D75B-4D44-A64B-BCECB8E7723E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC3850AD-D75B-4D44-A64B-BCECB8E7723E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +79,10 @@ Global
 		{51121E70-81F3-4B53-9577-9D056847FE72} = {CE6E927A-E597-44D3-93E9-FF7787FA4CBF}
 		{041278DE-C547-4A33-9F34-57E732F373F3} = {CE6E927A-E597-44D3-93E9-FF7787FA4CBF}
 		{2A835B17-D3EA-4381-AD88-F44B356C6DF0} = {3A81D174-541C-4AA3-AA0F-E5B6EAE15946}
+		{C322A034-8618-40F4-8CAA-163B44D18793} = {E13B5FB7-0AE9-4228-83B5-8F06C3B9E566}
+		{A7805725-125B-44B6-899A-81315F5E40F9} = {E13B5FB7-0AE9-4228-83B5-8F06C3B9E566}
+		{03FE1720-A409-4D39-A827-A3E4A89BB056} = {E13B5FB7-0AE9-4228-83B5-8F06C3B9E566}
+		{DC3850AD-D75B-4D44-A64B-BCECB8E7723E} = {E13B5FB7-0AE9-4228-83B5-8F06C3B9E566}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FBA976E-FF55-4C68-9F87-C7F668AEC484}
